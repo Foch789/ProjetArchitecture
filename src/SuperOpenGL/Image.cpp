@@ -1,4 +1,6 @@
-#include "Image.hpp"
+#include <SuperOpenGL/Image.hpp>
+
+namespace SuperOpenGL {
 
 std::ostream &operator<<(std::ostream &os, const uint8_t &value)
 {
@@ -24,4 +26,6 @@ std::istream &operator>>(std::istream &is, uint8_t &value)
   is >> v;
   value = v;
   return is;
+}
+
 }

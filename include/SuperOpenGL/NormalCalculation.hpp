@@ -1,11 +1,11 @@
-#ifndef LIB_NORMALCALCULATION_HPP
-#define LIB_NORMALCALCULATION_HPP
+#ifndef SUPEROPENGL_NORMALCALCULATION_HPP
+#define SUPEROPENGL_NORMALCALCULATION_HPP
 
 #include "Object.hpp"
 #include "Vector.hpp"
 #include <deque>
 
-namespace lib {
+namespace SuperOpenGL {
 
 class NormalCalculation // permet de calculer les vecteurs normaux des faces et
                         // des sommets
@@ -39,6 +39,6 @@ protected:
   std::deque<Vector> _vertexNormal;
 };
 
-} // namespace lib
+}
 
 #endif

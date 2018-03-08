@@ -1,9 +1,9 @@
-#ifndef LIB_SEQUENTIALNORMALCALCULATION_HPP
-#define LIB_SEQUENTIALNORMALCALCULATION_HPP
+#ifndef SUPEROPENGL_SEQUENTIALNORMALCALCULATION_HPP
+#define SUPEROPENGL_SEQUENTIALNORMALCALCULATION_HPP
 
 #include "NormalCalculation.hpp"
 
-namespace lib {
+namespace SuperOpenGL {
 
 class SequentialNormalCalculation : public NormalCalculation
 {
@@ -13,6 +13,6 @@ public:
   void calculate();
 };
 
-} // namespace lib
+}
 
 #endif

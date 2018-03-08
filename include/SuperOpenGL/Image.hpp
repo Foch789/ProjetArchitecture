@@ -1,5 +1,5 @@
-#ifndef IMAGE_HPP
-#define IMAGE_HPP
+#ifndef SUPEROPENGL_IMAGE_HPP
+#define SUPEROPENGL_IMAGE_HPP
 
 #include <algorithm>
 #include <cstdint>
@@ -7,6 +7,8 @@
 #include <iostream>
 #include <memory>
 #include <stdexcept>
+
+namespace SuperOpenGL {
 
 template <typename Pixel> class Image {
 public:
@@ -287,6 +289,8 @@ std::ostream &operator<<(std::ostream &os, const Image<Pixel> &image) {
   }
 
   return os;
+}
+
 }
 
 #endif

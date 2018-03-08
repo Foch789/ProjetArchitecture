@@ -1,9 +1,9 @@
-#ifndef LIB_OPENMPNORMALCALCULATION_HPP
-#define LIB_OPENMPNORMALCALCULATION_HPP
+#ifndef SUPEROPENGL_OPENMPNORMALCALCULATION_HPP
+#define SUPEROPENGL_OPENMPNORMALCALCULATION_HPP
 
 #include "NormalCalculation.hpp"
 
-namespace lib {
+namespace SuperOpenGL {
 
 class OpenMPNormalCalculation : public NormalCalculation
 {
@@ -14,6 +14,6 @@ public:
   void calculate();
 };
 
-} // namespace lib
+}
 
 #endif

@@ -1,9 +1,5 @@
-set(lib_SRC Face.cpp Maths.cpp NormalCalculation.cpp Object.cpp Vertex.cpp SequentialNormalCalculation.cpp OpenMPNormalCalculation.cpp PThreadNormalCalculation.cpp Vector.cpp)
+set(SRC ColorImage.cpp Face.cpp Image.cpp Maths.cpp NormalCalculation.cpp Object.cpp OpenMPNormalCalculation.cpp PThreadNormalCalculation.cpp SequentialNormalCalculation.cpp Toolbox.cpp Vector.cpp Vertex.cpp)
 
-add_library(common_lib STATIC ${lib_SRC})
-target_include_directories(common_lib SYSTEM PUBLIC ${INCLUDE_DIR})
-
-find_package(Threads REQUIRED)
-IF(THREADS_FOUND)
-  target_link_libraries (common_lib ${CMAKE_THREAD_LIBS_INIT})
-ENDIF()
+add_library(SuperOpenGL STATIC ${SRC})
+target_include_directories(SuperOpenGL SYSTEM PUBLIC ${INCLUDE_DIR})
+target_link_libraries(SuperOpenGL ${GLUT_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${JPEG_LIBRARIES})

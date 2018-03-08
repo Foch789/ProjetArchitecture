@@ -1,5 +1,6 @@
-#include "ColorImage.hpp"
-#include "Toolbox.hpp"
+#include <SuperOpenGL/ColorImage.hpp>
+#include <SuperOpenGL/Toolbox.hpp>
+
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
@@ -13,6 +14,8 @@
 extern "C" {
 #include <jpeglib.h>
 }
+
+namespace SuperOpenGL {
 
 ColorImage::ColorImage(const Size width, const Size height)
     : Image<ColorPixel>(width, height) {}
@@ -586,4 +589,6 @@ std::ostream &operator<<(std::ostream &os, const ColorPixel &pixel) {
 
 std::istream &operator>>(std::istream &is, ColorPixel &pixel) {
   return is >> pixel.red >> pixel.green >> pixel.blue;
+}
+
 }

@@ -1,9 +1,9 @@
-#include <lib/Maths.hpp>
-#include <lib/OpenMPNormalCalculation.hpp>
+#include <SuperOpenGL/Maths.hpp>
+#include <SuperOpenGL/OpenMPNormalCalculation.hpp>
 
 #include <omp.h>
 
-using namespace lib;
+namespace SuperOpenGL {
 
 class LockGuard;
 
@@ -95,4 +95,6 @@ OpenMPNormalCalculation::calculate()
       _vertexNormal[i].normalize(1);
     }
   }
+}
+
 }

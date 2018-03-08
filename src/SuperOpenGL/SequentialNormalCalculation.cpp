@@ -1,7 +1,7 @@
-#include <lib/Maths.hpp>
-#include <lib/SequentialNormalCalculation.hpp>
+#include <SuperOpenGL/Maths.hpp>
+#include <SuperOpenGL/SequentialNormalCalculation.hpp>
 
-using namespace lib;
+namespace SuperOpenGL {
 
 #include <iostream>
 
@@ -41,4 +41,6 @@ SequentialNormalCalculation::calculate()
   for (size_t i = 0; i < vertexCount; ++i) {
     _vertexNormal[i].normalize(1);
   }
+}
+
 }

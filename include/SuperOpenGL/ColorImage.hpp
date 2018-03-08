@@ -1,9 +1,11 @@
-#ifndef COLORIMAGE_HPP
-#define COLORIMAGE_HPP
+#ifndef SUPEROPENGL_COLORIMAGE_HPP
+#define SUPEROPENGL_COLORIMAGE_HPP
 
 #include "Image.hpp"
 #include <cmath>
 #include <string>
+
+namespace SuperOpenGL {
 
 class ColorPixel {
 public:
@@ -67,5 +69,7 @@ public:
 
 std::ostream &operator<<(std::ostream &os, const ColorPixel &pixel);
 std::istream &operator>>(std::istream &is, ColorPixel &pixel);
+
+}
 
 #endif

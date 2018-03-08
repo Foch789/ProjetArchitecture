@@ -1,6 +1,6 @@
-#include <lib/Face.hpp>
+#include <SuperOpenGL/Face.hpp>
 
-using namespace lib;
+namespace SuperOpenGL {
 
 Face::Face()
   : v0(0)
@@ -29,8 +29,6 @@ Face::operator=(const Face& f)
 
   return *this;
 }
-
-namespace lib {
 
 std::ostream&
 operator<<(std::ostream& os, const Face& f)

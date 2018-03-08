@@ -1,9 +1,9 @@
-#ifndef LIB_FACE_HPP
-#define LIB_FACE_HPP
+#ifndef SUPEROPENGL_FACE_HPP
+#define SUPEROPENGL_FACE_HPP
 
 #include <iostream>
 
-namespace lib {
+namespace SuperOpenGL {
 
 // faire un template pour size_t et Vertex
 class Face
@@ -22,6 +22,6 @@ public:
   friend std::istream& operator>>(std::istream&, Face&);
 };
 
-} // namespace lib
+}
 
 #endif

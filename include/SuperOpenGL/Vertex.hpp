@@ -1,9 +1,9 @@
-#ifndef LIB_VERTEX_HPP
-#define LIB_VERTEX_HPP
+#ifndef SUPEROPENGL_VERTEX_HPP
+#define SUPEROPENGL_VERTEX_HPP
 
 #include <iostream>
 
-namespace lib {
+namespace SuperOpenGL {
 
 class Vector;
 
@@ -47,6 +47,6 @@ public:
   friend std::istream& operator>>(std::istream&, Vertex&);
 };
 
-} // namespace lib
+}
 
 #endif

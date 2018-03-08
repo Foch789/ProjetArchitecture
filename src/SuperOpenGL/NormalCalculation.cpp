@@ -1,10 +1,10 @@
-#include <lib/NormalCalculation.hpp>
+#include <SuperOpenGL/NormalCalculation.hpp>
 
-#include <lib/OpenMPNormalCalculation.hpp>
-#include <lib/PThreadNormalCalculation.hpp>
-#include <lib/SequentialNormalCalculation.hpp>
+#include <SuperOpenGL/OpenMPNormalCalculation.hpp>
+#include <SuperOpenGL/PThreadNormalCalculation.hpp>
+#include <SuperOpenGL/SequentialNormalCalculation.hpp>
 
-using namespace lib;
+namespace SuperOpenGL {
 
 NormalCalculation::NormalCalculation(const Object& object)
   : _object(object)
@@ -34,4 +34,6 @@ NormalCalculation::factory(const Method m, const Object& o)
       return nullptr;
       break;
   }
+}
+
 }

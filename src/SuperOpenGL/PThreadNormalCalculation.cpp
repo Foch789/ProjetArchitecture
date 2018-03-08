@@ -1,11 +1,11 @@
-#include <lib/Maths.hpp>
-#include <lib/PThreadNormalCalculation.hpp>
+#include <SuperOpenGL/Maths.hpp>
+#include <SuperOpenGL/PThreadNormalCalculation.hpp>
 
 #include <algorithm>
 #include <pthread.h>
 #include <thread>
 
-using namespace lib;
+namespace SuperOpenGL {
 
 class LockGuard;
 
@@ -154,4 +154,6 @@ PThreadNormalCalculation::calculate()
 
     for (pthread_t& t : threads) pthread_join(t, NULL);
   }
+}
+
 }

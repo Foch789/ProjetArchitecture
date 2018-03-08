@@ -1,9 +1,9 @@
-#ifndef LIB_PTHREADNORMALCALCULATION_HPP
-#define LIB_PTHREADNORMALCALCULATION_HPP
+#ifndef SUPEROPENGL_PTHREADNORMALCALCULATION_HPP
+#define SUPEROPENGL_PTHREADNORMALCALCULATION_HPP
 
 #include "NormalCalculation.hpp"
 
-namespace lib {
+namespace SuperOpenGL {
 
 class PThreadNormalCalculation : public NormalCalculation
 {

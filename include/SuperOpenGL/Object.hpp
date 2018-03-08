@@ -1,5 +1,5 @@
-#ifndef LIB_OBJECT_HPP
-#define LIB_OBJECT_HPP
+#ifndef SUPEROPENGL_OBJECT_HPP
+#define SUPEROPENGL_OBJECT_HPP
 
 #include <deque>
 #include <iostream>
@@ -8,7 +8,7 @@
 #include "Vector.hpp"
 #include "Vertex.hpp"
 
-namespace lib {
+namespace SuperOpenGL {
 
 class Object // représente un maillage 3d
 {
@@ -40,6 +40,6 @@ private:
   Vertex _centroid;
 };
 
-} // namespace lib
+}
 
 #endif

@@ -1,8 +1,8 @@
 #include <cmath>
-#include <lib/Vector.hpp>
-#include <lib/Vertex.hpp>
+#include <SuperOpenGL/Vector.hpp>
+#include <SuperOpenGL/Vertex.hpp>
 
-using namespace lib;
+namespace SuperOpenGL {
 
 Vector::Vector()
 {
@@ -208,8 +208,6 @@ Vector::length() const
   return (sqrt(x * x + y * y + z * z));
 }
 
-namespace lib {
-
 std::ostream&
 operator<<(std::ostream& os, const Vector& v)
 {
@@ -222,4 +220,4 @@ operator>>(std::istream& is, Vector& v)
   return is >> v.x >> v.y >> v.z;
 }
 
-} // namespace lib
+}

@@ -1,4 +1,6 @@
-#include "Toolbox.hpp"
+#include <SuperOpenGL/Toolbox.hpp>
+
+namespace SuperOpenGL {
 
 void skip_line(std::istream &is) {
   while (is.get() != '\n' && is.good())
@@ -10,4 +12,6 @@ void skip_comments(std::istream &is) {
   for (; c == '#' && is; c = is.get())
     skip_line(is);
   is.putback(c);
+}
+
 }

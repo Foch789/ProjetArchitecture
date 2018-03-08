@@ -1,11 +1,12 @@
-#ifndef LIB_MATHS_HPP
-#define LIB_MATHS_HPP
+#ifndef SUPEROPENGL_MATHS_HPP
+#define SUPEROPENGL_MATHS_HPP
 
 #include "Object.hpp"
 
 #include <vector>
 
-namespace lib { namespace Maths {
+namespace SuperOpenGL {
+namespace Maths {
 
 long double
 angle_between_vectors(const Vector& v1, const Vector& v2);
@@ -25,6 +26,6 @@ average(ForwardIt first, ForwardIt last)
   return res / count;
 }
 
-}} // namespace lib::Maths
+}}
 
 #endif

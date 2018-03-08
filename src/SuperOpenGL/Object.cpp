@@ -1,12 +1,13 @@
+#include <SuperOpenGL/Object.hpp>
+
+#include <SuperOpenGL/Maths.hpp>
+
 #include <iostream>
 #include <string>
 #include <random>
 #include <limits>
 
-#include <lib/Maths.hpp>
-#include <lib/Object.hpp>
-
-using namespace lib;
+namespace SuperOpenGL {
 
 Object
 Object::randGen(const size_t nbVertices, const size_t nbFaces)
@@ -80,4 +81,6 @@ Object::writeOBJ(std::ostream& os, const std::deque<Vector>& vertexNormal) const
   for (const Face& f : _faces)
     os << "f " << f.v0 + 1 << "//" << f.v0 + 1 << ' ' << f.v1 + 1 << "//"
        << f.v1 + 1 << ' ' << f.v2 + 1 << "//" << f.v2 + 1 << '\n';
+}
+
 }

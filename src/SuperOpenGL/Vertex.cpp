@@ -1,9 +1,10 @@
 #include <iostream>
-#include <lib/Vector.hpp>
-#include <lib/Vertex.hpp>
+#include <SuperOpenGL/Vector.hpp>
+#include <SuperOpenGL/Vertex.hpp>
 
-using namespace lib;
 using namespace std;
+
+namespace SuperOpenGL {
 
 /*!
  *   \brief constructeur sans paramètres
@@ -247,8 +248,6 @@ Vertex::operator/=(const Vertex& p)
  *   \brief ecriture dans un flux ostream "(x, y, z)"
  *   \todo none
  */
-namespace lib {
-
 ostream&
 operator<<(ostream& _os, const Vertex& _p)
 {
@@ -265,4 +264,4 @@ operator>>(istream& p, Vertex& op)
   return p >> op.x >> op.y >> op.z;
 }
 
-} // namespace lib
+}
