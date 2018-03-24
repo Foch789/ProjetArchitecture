@@ -161,7 +161,7 @@ void ColorImage::writeJPEG(const std::string &fileName,
 }
 
 void ColorImage::writeJPEG(const char *fileName, unsigned int quality) const {
-  writeJPEG(fileName);
+  writeJPEG(fileName, quality);
 }
 
 ColorImage *ColorImage::readJPEG(std::istream &is) {

@@ -1,4 +1,4 @@
-set(SRC ColorImage.cpp Face.cpp Image.cpp Maths.cpp NormalCalculation.cpp Object.cpp OpenMPNormalCalculation.cpp PThreadNormalCalculation.cpp SequentialNormalCalculation.cpp Toolbox.cpp Vector.cpp Vertex.cpp)
+set(SRC ColorImage.cpp Face.cpp FragmentShader.cpp Image.cpp Maths.cpp NormalCalculation.cpp Object.cpp OpenMPNormalCalculation.cpp Program.cpp PThreadNormalCalculation.cpp SequentialNormalCalculation.cpp Shader.cpp Toolbox.cpp Vector.cpp Vertex.cpp VertexShader.cpp Window.cpp)
 
 add_library(SuperOpenGL STATIC ${SRC})
 target_include_directories(SuperOpenGL SYSTEM PUBLIC ${INCLUDE_DIR})
