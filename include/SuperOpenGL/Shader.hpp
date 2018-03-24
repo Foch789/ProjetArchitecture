@@ -15,9 +15,12 @@ public:
     void setSource(const std::istream &src);
     void setSource(const std::string &src);
     bool compile();
+    std::string info();
 
 private:
     GLuint _id;
+
+    friend class Program;
 };
 
 }
