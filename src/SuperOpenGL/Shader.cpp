@@ -40,4 +40,19 @@ bool Shader::compile()
     return r == GL_TRUE ? true : false;
 }
 
+std::string Shader::info()
+{
+    int length = 0;
+    int charsWritten  = 0;
+    std::string info;
+
+    glGetShaderiv(_id, GL_INFO_LOG_LENGTH, &length);
+    info.reserve(length);
+
+    if (length > 0)
+        glGetShaderInfoLog(_id, length, &charsWritten, &info[0]);
+
+    return info;
+}
+
 }
