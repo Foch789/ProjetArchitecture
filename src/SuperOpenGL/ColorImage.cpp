@@ -177,7 +177,11 @@ ColorImage *ColorImage::readJPEG(std::istream &is) {
 
   jpeg_create_decompress(&cinfo);
   jpeg_mem_src(&cinfo,
+#if LIBJPEG_TURBO_VERSION == 1.5.3
                reinterpret_cast<const unsigned char *>(imageSource.c_str()),
+#else
+               reinterpret_cast<unsigned char *>(const_cast<char *>(imageSource.c_str())),
+#endif
                imageSource.size());
   jpeg_read_header(&cinfo, TRUE);
   jpeg_start_decompress(&cinfo);
