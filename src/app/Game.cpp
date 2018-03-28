@@ -2,7 +2,9 @@
 
 Game::Game()
 {
-
+        camera.width = 300;
+        camera.height = 300;
+        camera.depth = 300;
 }
 
 Game::~Game()
@@ -12,11 +14,9 @@ Game::~Game()
 
 void Game::display()
 {
-
         camera.useView();
-        //target.displayTarget();
+        target.display();
         //projectiles
-
 }
 
 void Game::update(float time)

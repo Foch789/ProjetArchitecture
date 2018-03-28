@@ -3,14 +3,15 @@
 
 #include <SuperOpenGL/Vector.hpp>
 #include <SuperOpenGL/Face.hpp>
+#include <SuperOpenGL/TextureCoordinates.hpp>
 
 #include <vector>
 
-typedef struct                // Definition d'un point du terrain
+typedef struct
 {
-        //float s, t; // Coordonnees de texture
         //  GLfloat nx, ny, nz;   // Coordonnees de la normale associ�e � ce point
-        SuperOpenGL::Vector position;       // Coordonnees dans le plan xz
+        SuperOpenGL::TextureCoordinates text;
+        SuperOpenGL::Vector position;
 } Vertex;
 
 class Target
