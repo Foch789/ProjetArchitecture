@@ -14,10 +14,8 @@ View::~View()
 
 void View::useView()
 {
-
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-
-        glOrtho((width/2.0),(width/2.0),(height/2.0),(height/2.0),0,depth);
-
+        glOrtho(-(width/2.0),(width/2.0),-(height/2.0),(height/2.0),-depth,depth);
+        glMatrixMode(GL_MODELVIEW);
 }

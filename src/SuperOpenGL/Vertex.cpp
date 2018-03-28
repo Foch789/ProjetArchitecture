@@ -9,23 +9,23 @@ namespace SuperOpenGL {
 /*!
  *   \brief constructeur sans paramètres
  *   \todo none
- *   \note RR: modif 19/12/2006 : =0 -> =0.0 pour les long doubles
+ *   \note RR: modif 19/12/2006 : =0 -> =0.0 pour les floats
  */
 Vertex::Vertex()
-  : x(0.0)
-  , y(0.0)
-  , z(0.0)
+        : x(0.0)
+        , y(0.0)
+        , z(0.0)
 {
 }
 
 /*!
- *   \brief constructeur à partir de 3 réels (long double)
+ *   \brief constructeur à partir de 3 réels (float)
  *   \todo none
  */
-Vertex::Vertex(const long double x, const long double y, const long double z)
-  : x(x)
-  , y(y)
-  , z(z)
+Vertex::Vertex(const float x, const float y, const float z)
+        : x(x)
+        , y(y)
+        , z(z)
 {
 }
 
@@ -34,9 +34,9 @@ Vertex::Vertex(const long double x, const long double y, const long double z)
  *   \todo none
  */
 Vertex::Vertex(const Vertex& p)
-  : x(p.x)
-  , y(p.y)
-  , z(p.z)
+        : x(p.x)
+        , y(p.y)
+        , z(p.z)
 {
 }
 
@@ -45,9 +45,9 @@ Vertex::Vertex(const Vertex& p)
  *   \todo none
  */
 Vertex::Vertex(const Vector& v)
-  : x(v.x)
-  , y(v.y)
-  , z(v.z)
+        : x(v.x)
+        , y(v.y)
+        , z(v.z)
 {
 }
 
@@ -55,7 +55,8 @@ Vertex::Vertex(const Vector& v)
  *   \brief destructeur
  *   \todo none
  */
-Vertex::~Vertex() {}
+Vertex::~Vertex() {
+}
 
 /*!
  *   \brief conditionnelle ==
@@ -64,7 +65,7 @@ Vertex::~Vertex() {}
 bool
 Vertex::operator==(const Vertex& p) const
 {
-  return x == p.x && y == p.y && z == p.z;
+        return x == p.x && y == p.y && z == p.z;
 }
 
 /*!
@@ -74,11 +75,11 @@ Vertex::operator==(const Vertex& p) const
 Vertex&
 Vertex::operator=(const Vertex& p)
 {
-  x = p.x;
-  y = p.y;
-  z = p.z;
+        x = p.x;
+        y = p.y;
+        z = p.z;
 
-  return *this;
+        return *this;
 }
 
 /*!
@@ -88,11 +89,11 @@ Vertex::operator=(const Vertex& p)
 Vertex&
 Vertex::operator=(const Vector& v)
 {
-  x = v.x;
-  y = v.y;
-  z = v.z;
+        x = v.x;
+        y = v.y;
+        z = v.z;
 
-  return *this;
+        return *this;
 }
 
 /*!
@@ -102,7 +103,7 @@ Vertex::operator=(const Vector& v)
 Vertex
 Vertex::operator+(const Vector& v) const
 {
-  return Vertex(x + v.x, y + v.y, z + v.z);
+        return Vertex(x + v.x, y + v.y, z + v.z);
 }
 
 /*!
@@ -112,7 +113,7 @@ Vertex::operator+(const Vector& v) const
 Vertex
 Vertex::operator+(const Vertex& p) const
 {
-  return Vertex(x + p.x, y + p.y, z + p.z);
+        return Vertex(x + p.x, y + p.y, z + p.z);
 }
 
 /*!
@@ -122,11 +123,11 @@ Vertex::operator+(const Vertex& p) const
 Vertex&
 Vertex::operator+=(const Vector& v)
 {
-  x += v.x;
-  y += v.y;
-  z += v.z;
+        x += v.x;
+        y += v.y;
+        z += v.z;
 
-  return *this;
+        return *this;
 }
 
 /*!
@@ -136,7 +137,7 @@ Vertex::operator+=(const Vector& v)
 Vertex
 Vertex::operator-(const Vertex& p) const
 {
-  return Vertex(x - p.x, y - p.y, z - p.z);
+        return Vertex(x - p.x, y - p.y, z - p.z);
 }
 
 /*!
@@ -144,22 +145,22 @@ Vertex::operator-(const Vertex& p) const
  *   \todo none
  */
 Vertex&
-Vertex::operator*=(const long double n)
+Vertex::operator*=(const float n)
 {
-  x *= n;
-  y *= n;
-  z *= n;
+        x *= n;
+        y *= n;
+        z *= n;
 
-  return *this;
+        return *this;
 }
 
 /*!
  *   \brief multiplication par un scalaire (mise à l'échelle)
  *   \todo none
  */
-Vertex Vertex::operator*(const long double n) const
+Vertex Vertex::operator*(const float n) const
 {
-  return Vertex(x * n, y * n, z * n);
+        return Vertex(x * n, y * n, z * n);
 }
 
 /*!
@@ -168,15 +169,15 @@ Vertex Vertex::operator*(const long double n) const
  *   \note RR: modif 19/12/2006 : test sur op!=0
  */
 Vertex&
-Vertex::operator/=(const long double n)
+Vertex::operator/=(const float n)
 {
-  if (n == 0.0) throw runtime_error("Division by zero");
+        if (n == 0.0) throw runtime_error("Division by zero");
 
-  x /= n;
-  y /= n;
-  z /= n;
+        x /= n;
+        y /= n;
+        z /= n;
 
-  return *this;
+        return *this;
 }
 
 /*!
@@ -184,11 +185,11 @@ Vertex::operator/=(const long double n)
  *   \todo none
  */
 Vertex
-Vertex::operator/(const long double n) const
+Vertex::operator/(const float n) const
 {
-  if (n == 0.0) throw runtime_error("Division by zero");
+        if (n == 0.0) throw runtime_error("Division by zero");
 
-  return Vertex(x / n, y / n, z / n);
+        return Vertex(x / n, y / n, z / n);
 }
 
 /*!
@@ -197,7 +198,7 @@ Vertex::operator/(const long double n) const
  */
 Vertex Vertex::operator*(const Vertex& p) const
 {
-  return Vertex(x * p.x, y * p.y, z * p.z);
+        return Vertex(x * p.x, y * p.y, z * p.z);
 }
 
 /*!
@@ -207,11 +208,11 @@ Vertex Vertex::operator*(const Vertex& p) const
 Vertex&
 Vertex::operator*=(const Vertex& p)
 {
-  x *= p.x;
-  y *= p.y;
-  z *= p.z;
+        x *= p.x;
+        y *= p.y;
+        z *= p.z;
 
-  return *this;
+        return *this;
 }
 
 /*!
@@ -221,10 +222,10 @@ Vertex::operator*=(const Vertex& p)
 Vertex
 Vertex::operator/(const Vertex& p) const
 {
-  if (p.x == 0.0 || p.y == 0.0 || p.z == 0.0)
-    throw runtime_error("Division by zero");
+        if (p.x == 0.0 || p.y == 0.0 || p.z == 0.0)
+                throw runtime_error("Division by zero");
 
-  return Vertex(x / p.x, y / p.y, z / p.z);
+        return Vertex(x / p.x, y / p.y, z / p.z);
 }
 
 /*!
@@ -234,14 +235,14 @@ Vertex::operator/(const Vertex& p) const
 Vertex&
 Vertex::operator/=(const Vertex& p)
 {
-  if (p.x == 0.0 || p.y == 0.0 || p.z == 0.0)
-    throw runtime_error("Division by zero");
+        if (p.x == 0.0 || p.y == 0.0 || p.z == 0.0)
+                throw runtime_error("Division by zero");
 
-  x /= p.x;
-  y /= p.y;
-  z /= p.z;
+        x /= p.x;
+        y /= p.y;
+        z /= p.z;
 
-  return *this;
+        return *this;
 }
 
 /*!
@@ -251,7 +252,7 @@ Vertex::operator/=(const Vertex& p)
 ostream&
 operator<<(ostream& _os, const Vertex& _p)
 {
-  return _os << _p.x << ' ' << _p.y << ' ' << _p.z;
+        return _os << _p.x << ' ' << _p.y << ' ' << _p.z;
 }
 
 /*!
@@ -261,7 +262,7 @@ operator<<(ostream& _os, const Vertex& _p)
 istream&
 operator>>(istream& p, Vertex& op)
 {
-  return p >> op.x >> op.y >> op.z;
+        return p >> op.x >> op.y >> op.z;
 }
 
 }
