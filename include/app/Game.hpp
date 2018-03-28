@@ -14,7 +14,7 @@ private:
 
 View camera;
 Target target;
-std::vector<Projectile> projectiles;
+std::vector<Projectile> _projectiles;
 
 public:
 
@@ -22,7 +22,7 @@ Game();
 ~Game();
 
 void display();
-void update(float time);
+void update(float elapsedTime);
 
 void fire(int x,int y);
 void collision();

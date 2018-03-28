@@ -5,19 +5,17 @@
 
 class Projectile
 {
-
 public:
+    Projectile(SuperOpenGL::Vector position, SuperOpenGL::Vector direction);
 
-SuperOpenGL::Vector direction;
-float speed;
-float size;
+    void display();
+    void update(float elapsedTime);
 
-Projectile();
-~Projectile();
-
-
-void displayProjectile();
-
+private:
+    constexpr static const float _speed = 1;
+    constexpr static const float _size = 200;
+    SuperOpenGL::Vector _direction;
+    SuperOpenGL::Vector _position;
 };
 
 #endif
