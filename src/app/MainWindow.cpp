@@ -1,4 +1,5 @@
 #include <app/MainWindow.hpp>
+#include <GL/freeglut.h>
 
 MainWindow::MainWindow()
         : Window("Projet architecture")
@@ -17,7 +18,11 @@ void MainWindow::init()
 void MainWindow::display()
 {
 
-        game->display();
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+
+    game->display();
+
+    glutSwapBuffers();
 
 }
 

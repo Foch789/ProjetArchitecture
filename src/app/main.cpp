@@ -1,8 +1,11 @@
 #include <app/MainWindow.hpp>
+#include <GL/glew.h>
+#include <GL/freeglut.h>
+#include <iostream>
 
 static void InitializeGL();
 
-int main()
+int main(int argc, char **argv)
 {
 
         glutInit(&argc, argv);
@@ -13,7 +16,7 @@ int main()
         GLenum res = glewInit();
 
         if (res != GLEW_OK) {
-                cerr << "Error: " << glewGetErrorString(res) << endl;
+                std::cerr << "Error: " << glewGetErrorString(res) << std::endl;
                 return (EXIT_FAILURE);
         }
 

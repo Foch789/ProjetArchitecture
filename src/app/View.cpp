@@ -12,7 +12,7 @@ View::~View()
 }
 
 
-View::useView()
+void View::useView()
 {
 
         glMatrixMode(GL_PROJECTION);

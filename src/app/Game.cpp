@@ -1,6 +1,6 @@
 #include <app/Game.hpp>
 
-Game::Game() :
+Game::Game()
 {
 
 }
@@ -13,7 +13,7 @@ Game::~Game()
 void Game::display()
 {
 
-        camera.useView;
+        camera.useView();
         //target.displayTarget();
         //projectiles
 
