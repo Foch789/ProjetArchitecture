@@ -10,41 +10,41 @@ class Vector;
 class Vertex
 {
 public:
-  long double x;
-  long double y;
-  long double z;
+float x;
+float y;
+float z;
 
-  Vertex();
-  Vertex(const long double x, const long double y, const long double z);
-  Vertex(const Vertex&);
-  Vertex(const Vector&);
-  ~Vertex();
+Vertex();
+Vertex(const float x, const float y, const float z);
+Vertex(const Vertex&);
+Vertex(const Vector&);
+~Vertex();
 
-  bool operator==(const Vertex&) const;
+bool operator==(const Vertex&) const;
 
-  Vertex& operator=(const Vertex&);
-  Vertex& operator=(const Vector&);
+Vertex& operator=(const Vertex&);
+Vertex& operator=(const Vector&);
 
-  Vertex operator+(const Vertex&) const;
-  Vertex operator+(const Vector&) const;
-  Vertex& operator+=(const Vector&);
+Vertex operator+(const Vertex&) const;
+Vertex operator+(const Vector&) const;
+Vertex& operator+=(const Vector&);
 
-  Vertex operator-(const Vertex&) const;
+Vertex operator-(const Vertex&) const;
 
-  Vertex operator*(const Vertex&)const;
-  Vertex& operator*=(const Vertex&);
+Vertex operator*(const Vertex&) const;
+Vertex& operator*=(const Vertex&);
 
-  Vertex operator*(const long double)const;
-  Vertex& operator*=(const long double);
+Vertex operator*(const float) const;
+Vertex& operator*=(const float);
 
-  Vertex operator/(const long double) const;
-  Vertex& operator/=(const long double);
+Vertex operator/(const float) const;
+Vertex& operator/=(const float);
 
-  Vertex operator/(const Vertex&) const;
-  Vertex& operator/=(const Vertex&);
+Vertex operator/(const Vertex&) const;
+Vertex& operator/=(const Vertex&);
 
-  friend std::ostream& operator<<(std::ostream&, const Vertex&);
-  friend std::istream& operator>>(std::istream&, Vertex&);
+friend std::ostream& operator<<(std::ostream&, const Vertex&);
+friend std::istream& operator>>(std::istream&, Vertex&);
 };
 
 }
