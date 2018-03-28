@@ -4,6 +4,8 @@
 #include <SuperOpenGL/Vector.hpp>
 #include <SuperOpenGL/Face.hpp>
 #include <SuperOpenGL/TextureCoordinates.hpp>
+#include <SuperOpenGL/VertexShader>
+#include <SuperOpenGL/Program>
 
 #include <vector>
 
@@ -26,11 +28,19 @@ SuperOpenGL::Vector direction;
 std::vector<Vertex> vertices;
 std::vector<SuperOpenGL::Face> faces;
 
-//Texture texture
+SuperOpenGL::VertexShader vs;
+SuperOpenGL::Program prog;
+
+std::vector<SuperOpenGL::Vector> zone;
+
 Target();
 ~Target();
 
 void display();
+
+void update(float time);
+
+void zone(float distance,float angle);
 
 };
 

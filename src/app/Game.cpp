@@ -1,10 +1,9 @@
 #include <app/Game.hpp>
 
-Game::Game()
+Game::Game() : mytime(0)
 {
-        camera.width = 300;
-        camera.height = 300;
-        camera.depth = 300;
+
+        target.zone()
 }
 
 Game::~Game()
