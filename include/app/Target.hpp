@@ -8,7 +8,7 @@
 
 typedef struct                // Definition d'un point du terrain
 {
-        float s, t; // Coordonnees de texture
+        //float s, t; // Coordonnees de texture
         //  GLfloat nx, ny, nz;   // Coordonnees de la normale associ�e � ce point
         SuperOpenGL::Vector position;       // Coordonnees dans le plan xz
 } Vertex;
