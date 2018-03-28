@@ -23,5 +23,6 @@ find_package(JPEG REQUIRED)
 include_directories(${JPEG_INCLUDE_DIR})
 
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(ASSETS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/assets)
 
 add_subdirectory(src)
