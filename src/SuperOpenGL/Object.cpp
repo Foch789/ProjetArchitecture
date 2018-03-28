@@ -27,7 +27,7 @@ Object::randGen(const size_t nbVertices, const size_t nbFaces)
 }
 
 Object
-Object::readOFF(std::istream& is)
+Object::readOFF(std::istream& is, const bool hasUV)
 {
   std::string magic;
   is >> magic;
@@ -38,12 +38,19 @@ Object::readOFF(std::istream& is)
   size_t arraySize;
   is >> arraySize;
   obj._vertices.resize(arraySize);
+  if (hasUV)
+    obj._textureCoordinates.resize(arraySize);
+  else
+      obj._textureCoordinates.clear();
   is >> arraySize;
   obj._faces.resize(arraySize);
   is >> arraySize;
 
-  for (Vertex& p : obj._vertices) {
+  for (size_t i = 0; i < obj._vertices.size(); ++i) {
+    Vertex& p = obj._vertices[i];
     is >> p;
+    if (hasUV)
+        is >> obj._textureCoordinates[i];
 
     if (obj._min.x > p.x) obj._min.x = p.x;
     if (obj._min.y > p.y) obj._min.y = p.y;
