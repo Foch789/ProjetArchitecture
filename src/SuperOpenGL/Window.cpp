@@ -20,6 +20,7 @@ Window::Window(const std::string &title)
     glutKeyboardFunc(&Window::keyboardCallback);
     glutSpecialFunc(&Window::specialCallback);
     glutMotionFunc(&Window::motionCallback);
+    glutMouseFunc(&Window::mouseCallback);
     glutTimerFunc(_updateFreq, &Window::timerCallback, 0);
 }
 
