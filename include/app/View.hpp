@@ -7,13 +7,12 @@ class View
 {
 
 public:
-
-float width,height,depth;
+size_t windowWidth, windowHeight;
+SuperOpenGL::Vector eye, center, up;
 
 View();
-~View();
 
-void useView();
+void use();
 
 };
 

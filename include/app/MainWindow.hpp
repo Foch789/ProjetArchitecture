@@ -15,6 +15,7 @@ std::unique_ptr<Game> game;
 protected:
 
 virtual void display();
+virtual void reshaped(size_t width, size_t height);
 virtual void keyPressed(unsigned char key, int x, int y);
 virtual void specialKeyPressed(int key, int x, int y);
 virtual void mouseClicked(int button, int state, int x, int y);
