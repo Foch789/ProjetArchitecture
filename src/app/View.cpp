@@ -2,20 +2,17 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
-View::View() : width(0),height(0),depth(0)
-{
+View::View()
+    : windowWidth(0)
+    , windowHeight(0)
+{}
 
-}
-
-View::~View()
-{
-}
-
-
-void View::useView()
+void View::use()
 {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        glOrtho(-(width/2.0),(width/2.0),-(height/2.0),(height/2.0),-depth,depth);
+        gluPerspective(45.0, windowWidth/double(windowHeight), 0.1, 99999.0);
         glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z);
 }

@@ -22,6 +22,7 @@ Game();
 ~Game();
 
 void display();
+void resize(size_t width, size_t height);
 void update(float elapsedTime);
 
 void fire(int x,int y);

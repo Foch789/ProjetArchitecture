@@ -12,8 +12,8 @@ public:
     void update(float elapsedTime);
 
 private:
-    constexpr static const float _speed = 1;
-    constexpr static const float _size = 200;
+    constexpr static const float _speed = 0.1;
+    constexpr static const float _size = 5;
     SuperOpenGL::Vector _direction;
     SuperOpenGL::Vector _position;
 };

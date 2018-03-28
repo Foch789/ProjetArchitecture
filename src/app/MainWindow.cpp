@@ -23,6 +23,12 @@ void MainWindow::display()
     glutSwapBuffers();
 }
 
+void MainWindow::reshaped(size_t width, size_t height)
+{
+    glViewport(0, 0, width, height);
+    game->resize(width, height);
+}
+
 void MainWindow::keyPressed(unsigned char key, int x, int y)
 {
 
