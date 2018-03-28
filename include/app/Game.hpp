@@ -1,6 +1,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <vector>
+
 #include "View.hpp"
 #include "Target.hpp"
 #include "Projectile.hpp"
@@ -12,17 +14,17 @@ private:
 
 View camera;
 Target target;
-Projectile *projectiles;
+std::vector<Projectile> projectiles;
 
 public:
 
 Game();
 ~Game();
 
-void displayMain()
-void update();
+void display();
+void update(float time);
 
-void fire();
+void fire(int x,int y);
 void collision();
 
 };
