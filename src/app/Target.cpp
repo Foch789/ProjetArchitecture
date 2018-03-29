@@ -62,6 +62,7 @@ Target::~Target()
 
 void Target::display()
 {
+
         prog.enable();
         glEnable(GL_TEXTURE_2D);
         texture.enable();
@@ -73,6 +74,14 @@ void Target::display()
         texture.disable();
         glDisable(GL_TEXTURE_2D);
         prog.disable();
+
+        for (int i = 0; i < deform.size(); i++) {
+                deform[i].prog.enable();
+                glUniform3fv(deform[i]._centre, 1, reinterpret_cast<GLfloat*>(&deform[i].center));
+                glUniform3fv(deform[i]._vecteur, 1, reinterpret_cast<GLfloat*>(&deform[i].vector));
+                glUniform1fARB(deform[i]._rayon,deform[i].rayon);
+                deform[i].prog.disable();
+        }
 }
 
 void Target::update(float time)
