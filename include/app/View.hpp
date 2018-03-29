@@ -13,7 +13,13 @@ SuperOpenGL::Vector eye, center, up;
 View();
 
 void use();
+void show();
 
+private:
+unsigned int _frameBufferId;
+unsigned int _renderedTextureId;
+unsigned int _depthBufferId;
+unsigned int _vertexBuffer;
 };
 
 #endif

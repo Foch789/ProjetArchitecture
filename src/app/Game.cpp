@@ -19,6 +19,8 @@ void Game::display()
 
         for (Projectile &p : _projectiles)
                 p.display();
+
+        camera.show();
 }
 
 void Game::resize(size_t width, size_t height)
