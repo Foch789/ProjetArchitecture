@@ -11,48 +11,45 @@
 #include <SuperOpenGL/Program.hpp>
 #include <GL/glew.h>
 #include <vector>
+#include <list>
+#include <glm/vec3.hpp>
 
 typedef struct
 {
-        //  GLfloat nx, ny, nz;   // Coordonnees de la normale associ�e � ce point
         SuperOpenGL::TextureCoordinates text;
         SuperOpenGL::Vector position;
 } Vertex;
 
-typedef struct
-{
-        SuperOpenGL::Program prog;
-        GLint _centre;
-        GLint _vecteur;
-        GLint _rayon;
-        SuperOpenGL::Vector center;
-        SuperOpenGL::Vector vector;
-        float rayon;
-
-} Deform;
 
 class Target
 {
 
 public:
 
+GLint loc;
 SuperOpenGL::Vector position;
 SuperOpenGL::Vector direction;
 SuperOpenGL::Texture texture;
 
 std::vector<Vertex> vertices;
 std::vector<SuperOpenGL::Face> faces;
-std::vector<Deform> deform;
+
+GLint _centre;
+GLint _vecteur;
+GLint _rayon;
+GLint _nbr;
+std::vector<glm::vec3> centre;
+std::vector<glm::vec3> def;
+std::vector<float> rayon;
+int nbr;
 
 SuperOpenGL::VertexShader vs;
-SuperOpenGL::VertexShader vsd;
 SuperOpenGL::FragmentShader fs;
 SuperOpenGL::Program prog;
 
 SuperOpenGL::Vector zone[4];
 
 float timeT;
-GLint loc;
 float width;
 SuperOpenGL::Vertex max;
 SuperOpenGL::Vertex min;

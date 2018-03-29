@@ -13,7 +13,8 @@ Target::Target()
         SuperOpenGL::Object object = SuperOpenGL::Object::readOFF(file, true);
 
         width = (object.max().x-object.min().x)+20;
-        //height = (object.max().y+object.min().x)+20;
+        nbr = 0;
+
         max = object.max();
         min = object.min();
 
@@ -35,19 +36,19 @@ Target::Target()
         vs.readSource("assets/shaders/target.vert");
         vs.compile();
 
-        vsd.readSource("assets/shaders/deform.vert");
-        vsd.compile();
-
         fs.readSource("assets/shaders/target.frag");
         fs.compile();
 
         prog.attach(vs);
+        prog.attach(fs);
         prog.link();
 
-        //std::cout << vs.info() << std::endl;
-        //std::cout << prog.info() << std::endl;
-
         loc = glGetUniformLocation(prog.id(),"pos");
+
+
+        _centre = glGetUniformLocation(prog.id(),"tabcentre");
+        _vecteur= glGetUniformLocation(prog.id(),"tabdef");
+        _rayon =glGetUniformLocation(prog.id(),"tabrayon");
 
         position.x = 0;
         position.y = 0;
@@ -63,27 +64,24 @@ Target::~Target()
 void Target::display()
 {
 
-//        prog.enable();
-        for (int i = 0; i < deform.size(); i++)
-                deform[i].prog.enable();
-
+        prog.enable();
         glEnable(GL_TEXTURE_2D);
         texture.enable();
         glPushMatrix();
-        glRotatef(180.f, 0.f, 0.f, 1.f);
+        //glRotatef(180.f, 0.f, 0.f, 1.f);
         glInterleavedArrays(GL_T2F_V3F,0,vertices.data());
         glDrawElements(GL_TRIANGLES,faces.size()*3,GL_UNSIGNED_INT, faces.data());
         glPopMatrix();
         texture.disable();
         glDisable(GL_TEXTURE_2D);
-//        prog.disable();
-        for (int i = 0; i < deform.size(); i++)
-                deform[i].prog.disable();
+        prog.disable();
+
 }
 
 void Target::update(float time)
 {
-//        prog.enable();
+
+        prog.enable();
         timeT+=time;
         if (timeT > 10000) {
 
@@ -92,13 +90,17 @@ void Target::update(float time)
                 std::uniform_real_distribution<> dis(-1, 1);
                 direction.x = dis(gen);
                 direction.y = dis(gen);
-                direction.z = dis(gen);
+                direction.z = 0; //dis(gen);
                 direction *= 4;
                 timeT -= 10000;
         }
 
-//        glUniform3fv(loc, 1, reinterpret_cast<GLfloat*>(&position));
+        glUniform3fv(loc, 1, reinterpret_cast<GLfloat*>(&position));
         //glUniform3fv(loc, 1, &position.x);
+        //std::cout << nbr << std::endl;
+        glUniform3fv(_centre, centre.size(), reinterpret_cast<GLfloat*>(&centre[0]));
+        glUniform3fv(_vecteur, def.size(), reinterpret_cast<GLfloat*>(&def[0]));
+        glUniform1fv(_rayon,rayon.size(), reinterpret_cast<GLfloat*>(&rayon[0]));
 
         if ((position.x + direction.x) >= zone[0].x)
         {
@@ -129,7 +131,7 @@ void Target::update(float time)
 
         //position+=direction.normalize(1.0);
 
-//        prog.disable();
+        prog.disable();
 
 }
 
@@ -163,37 +165,27 @@ void Target::zoneT(float distance,float angle)
 
 void Target::boundingBox(SuperOpenGL::Vector &topLeft, SuperOpenGL::Vector &bottomRight)
 {
-    topLeft = min;
-    topLeft.y = -topLeft.y;
-    bottomRight = max;
-    bottomRight.y = -bottomRight.y;
-    topLeft += position;
-    bottomRight += position;
+        topLeft = min;
+        topLeft.y = -topLeft.y;
+        bottomRight = max;
+        bottomRight.y = -bottomRight.y;
+        topLeft += position;
+        bottomRight += position;
 }
 
 void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)
 {
+        centre.push_back( glm::vec3(_center.x,_center.y,_center.z));
+        def.push_back(glm::vec3(_vector.x,_vector.y,_vector.z));
+        rayon.push_back(_rayon);
 
-        Deform o;
-
-        o.prog.attach(vsd);
-        o.prog.link();
-        o.prog.enable();
-
-        o._centre = glGetUniformLocation(o.prog.id(),"centre_deformation");
-        o._vecteur = glGetUniformLocation(o.prog.id(),"vecteur_deformation");
-        o._rayon = glGetUniformLocation(o.prog.id(),"rayon_deformation");
-
-        o.center = _center;
-        o.vector = _vector;
-        o.rayon = _rayon;
-
-        glUniform3fv(o._centre, 1, reinterpret_cast<GLfloat*>(&o.center));
-        glUniform3fv(o._vecteur, 1, reinterpret_cast<GLfloat*>(&o.vector));
-        glUniform1fARB(o._rayon,o.rayon);
-
-        o.prog.disable();
-
-        deform.push_back(o);
+        if(nbr >= 10)
+        {
+                nbr--;
+                centre.erase(centre.begin());
+                def.erase(def.begin());
+                rayon.erase(rayon.begin());
+        }
+        nbr++;
 
 }

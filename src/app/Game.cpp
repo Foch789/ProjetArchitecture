@@ -6,7 +6,7 @@ Game::Game()
 {
 
         target.zoneT(300.0,22.5);
-        camera.eye = SuperOpenGL::Vector {0, 0, 300};
+        camera.eye = SuperOpenGL::Vector {0, 0, 200};
         camera.center = SuperOpenGL::Vector {0, 0, 0};
         camera.up = SuperOpenGL::Vector {0, 1, 0};
 
@@ -75,17 +75,17 @@ void Game::fire(int x, int y)
 
 void Game::collision()
 {
-    SuperOpenGL::Vector topLeft, bottomRight;
-    target.boundingBox(topLeft, bottomRight);
+        SuperOpenGL::Vector topLeft, bottomRight;
+        target.boundingBox(topLeft, bottomRight);
 
         _projectiles.erase(std::remove_if(_projectiles.begin(), _projectiles.end(), [&] (const Projectile &p){
-            if (topLeft.x <= p.position().x && p.position().x <= bottomRight.x &&
-                    topLeft.y >= p.position().y && p.position().y >= bottomRight.y &&
-                    p.position().z < target.position.z) {
-                std::cout << "touché" << std::endl;
-                target.sendDeform(p.position(), {30, 30, 30}, Projectile::size);
-                return true;
-            }
+                                                  if (topLeft.x <= p.position().x && p.position().x <= bottomRight.x &&
+                                                      topLeft.y >= p.position().y && p.position().y >= bottomRight.y &&
+                                                      p.position().z < target.position.z) {
+                                                          std::cout << "touché" << std::endl;
+                                                          target.sendDeform(p.position(), {0, 0, 10}, Projectile::size);
+                                                          return true;
+                                                  }
                                                   return p.position().z < -100;
                                           }), _projectiles.end());
 }
