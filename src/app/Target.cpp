@@ -63,7 +63,10 @@ Target::~Target()
 void Target::display()
 {
 
-        prog.enable();
+//        prog.enable();
+        for (int i = 0; i < deform.size(); i++)
+                deform[i].prog.enable();
+
         glEnable(GL_TEXTURE_2D);
         texture.enable();
         glPushMatrix();
@@ -73,20 +76,14 @@ void Target::display()
         glPopMatrix();
         texture.disable();
         glDisable(GL_TEXTURE_2D);
-        prog.disable();
-
-        for (int i = 0; i < deform.size(); i++) {
-                deform[i].prog.enable();
-                glUniform3fv(deform[i]._centre, 1, reinterpret_cast<GLfloat*>(&deform[i].center));
-                glUniform3fv(deform[i]._vecteur, 1, reinterpret_cast<GLfloat*>(&deform[i].vector));
-                glUniform1fARB(deform[i]._rayon,deform[i].rayon);
+//        prog.disable();
+        for (int i = 0; i < deform.size(); i++)
                 deform[i].prog.disable();
-        }
 }
 
 void Target::update(float time)
 {
-        prog.enable();
+//        prog.enable();
         timeT+=time;
         if (timeT > 10000) {
 
@@ -100,7 +97,7 @@ void Target::update(float time)
                 timeT -= 10000;
         }
 
-        glUniform3fv(loc, 1, reinterpret_cast<GLfloat*>(&position));
+//        glUniform3fv(loc, 1, reinterpret_cast<GLfloat*>(&position));
         //glUniform3fv(loc, 1, &position.x);
 
         if ((position.x + direction.x) >= zone[0].x)
@@ -130,9 +127,9 @@ void Target::update(float time)
                 direction.y = -(direction.y);
         }
 
-        position+=direction.normalize(1.0);
+        //position+=direction.normalize(1.0);
 
-        prog.disable();
+//        prog.disable();
 
 }
 
@@ -164,6 +161,16 @@ void Target::zoneT(float distance,float angle)
 
 }
 
+void Target::boundingBox(SuperOpenGL::Vector &topLeft, SuperOpenGL::Vector &bottomRight)
+{
+    topLeft = min;
+    topLeft.y = -topLeft.y;
+    bottomRight = max;
+    bottomRight.y = -bottomRight.y;
+    topLeft += position;
+    bottomRight += position;
+}
+
 void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)
 {
 
@@ -171,6 +178,7 @@ void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,
 
         o.prog.attach(vsd);
         o.prog.link();
+        o.prog.enable();
 
         o._centre = glGetUniformLocation(o.prog.id(),"centre_deformation");
         o._vecteur = glGetUniformLocation(o.prog.id(),"vecteur_deformation");
@@ -179,6 +187,12 @@ void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,
         o.center = _center;
         o.vector = _vector;
         o.rayon = _rayon;
+
+        glUniform3fv(o._centre, 1, reinterpret_cast<GLfloat*>(&o.center));
+        glUniform3fv(o._vecteur, 1, reinterpret_cast<GLfloat*>(&o.vector));
+        glUniform1fARB(o._rayon,o.rayon);
+
+        o.prog.disable();
 
         deform.push_back(o);
 

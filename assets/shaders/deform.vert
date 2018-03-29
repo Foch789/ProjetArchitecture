@@ -12,16 +12,18 @@ varying float VFactif;
 
 void main(void) {
 								vec4 point = vec4(gl_Vertex);
-
+/*
 								float d = distance(vec4(centre_deformation, 1.0), point);
 
-								gl_FrontColor = gl_Color;
-
+								//gl_FrontColor = gl_Color;
+gl_TexCoord[0] = gl_MultiTexCoord0;
+point.xyz = point.xyz + 40;
 								VFactif = 0.0;
 								if (d < rayon_deformation) {
-																point.xyz = point.xyz + (1.0 - (d / rayon_deformation)) * vecteur_deformation.xyz;
+																point.xyz = point.xyz + 40;//(1.0 - (d / rayon_deformation)) * vecteur_deformation.xyz;
 																VFactif = 1.0;
 								}
-
+*/
+point.x = point.x + 40;
 								gl_Position = gl_ModelViewProjectionMatrix * point;
 }

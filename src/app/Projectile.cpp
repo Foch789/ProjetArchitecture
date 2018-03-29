@@ -13,11 +13,11 @@ void Projectile::display()
     glColor3f(1, 0, 0);
     glPushMatrix();
         glTranslatef(_position.x, _position.y, _position.z);
-        glutSolidSphere(_size, 180, 180);
+        glutSolidSphere(size, 180, 180);
     glPopMatrix();
 }
 
 void Projectile::update(float elapsedTime)
 {
-    _position += _direction * _speed * elapsedTime;
+    _position += _direction * speed * elapsedTime;
 }
