@@ -2,6 +2,7 @@
 #define TARGET_HPP
 
 #include <SuperOpenGL/Vector.hpp>
+#include <SuperOpenGL/Vertex.hpp>
 #include <SuperOpenGL/Face.hpp>
 #include <SuperOpenGL/TextureCoordinates.hpp>
 #include <SuperOpenGL/Texture.hpp>
@@ -44,6 +45,7 @@ std::vector<SuperOpenGL::Face> faces;
 std::vector<Deform> deform;
 
 SuperOpenGL::VertexShader vs;
+SuperOpenGL::VertexShader vsd;
 SuperOpenGL::FragmentShader fs;
 SuperOpenGL::Program prog;
 
@@ -52,6 +54,8 @@ SuperOpenGL::Vector zone[4];
 float timeT;
 GLint loc;
 float width;
+SuperOpenGL::Vertex max;
+SuperOpenGL::Vertex min;
 
 Target();
 ~Target();

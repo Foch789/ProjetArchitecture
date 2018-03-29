@@ -13,6 +13,9 @@ Target::Target()
         SuperOpenGL::Object object = SuperOpenGL::Object::readOFF(file, true);
 
         width = (object.max().x-object.min().x)+20;
+        //height = (object.max().y+object.min().x)+20;
+        max = object.max();
+        min = object.min();
 
         vertices.reserve(object.vertices().size());
         for (size_t i = 0; i < object.vertices().size(); ++i) {
@@ -32,6 +35,9 @@ Target::Target()
         vs.readSource("assets/shaders/target.vert");
         vs.compile();
 
+        vsd.readSource("assets/shaders/deform.vert");
+        vsd.compile();
+
         fs.readSource("assets/shaders/target.frag");
         fs.compile();
 
@@ -48,7 +54,6 @@ Target::Target()
         position.z = 0;
         timeT = 10000;
 
-        std::cout << object.max().x << " " << object.min().x << std::endl;
 }
 
 Target::~Target()
@@ -150,8 +155,31 @@ void Target::zoneT(float distance,float angle)
 
 }
 
-void sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)
+void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)
 {
 
+        /*SuperOpenGL::Program prog;
+           GLint _centre;
+           GLint _vecteur;
+           GLint _rayon;
+           SuperOpenGL::Vector center;
+           SuperOpenGL::Vector vector;
+           float rayon;*/
+        //glGetUniformLocation(prog.id(),"pos");
+
+        Deform o;
+
+        o.prog.attach(vsd);
+        o.prog.link();
+
+        o._centre = glGetUniformLocation(o.prog.id(),"centre_deformation");
+        o._vecteur = glGetUniformLocation(o.prog.id(),"vecteur_deformation");
+        o._rayon = glGetUniformLocation(o.prog.id(),"rayon_deformation");
+
+        o.center = _center;
+        o.vector = _vector;
+        o.rayon = _rayon;
+
+        deform.push_back(o);
 
 }

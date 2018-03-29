@@ -6,9 +6,9 @@ Game::Game()
 {
 
         target.zoneT(500.0,22.5);
-        camera.eye = {0, 0, 500};
-        camera.center = {0, 0, 0};
-        camera.up = {0, 1, 0};
+        camera.eye = SuperOpenGL::Vector {0, 0, 500};
+        camera.center = SuperOpenGL::Vector {0, 0, 0};
+        camera.up = SuperOpenGL::Vector {0, 1, 0};
 
 }
 
