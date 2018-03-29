@@ -37,11 +37,14 @@ std::vector<SuperOpenGL::Face> faces;
 GLint _centre;
 GLint _vecteur;
 GLint _rayon;
-GLint _nbr;
+GLint _t;
 std::vector<glm::vec3> centre;
 std::vector<glm::vec3> def;
 std::vector<float> rayon;
+bool touche;
+float t;
 int nbr;
+bool p;
 
 SuperOpenGL::VertexShader vs;
 SuperOpenGL::FragmentShader fs;
@@ -65,6 +68,7 @@ void zoneT(float distance,float angle);
 
 void sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon);
 void boundingBox(SuperOpenGL::Vector &topLeft, SuperOpenGL::Vector &bottomRight);
+void pause();
 
 };
 

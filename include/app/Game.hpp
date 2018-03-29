@@ -27,6 +27,7 @@ void update(float elapsedTime);
 
 void fire(int x,int y);
 void collision();
+void pause();
 
 };
 

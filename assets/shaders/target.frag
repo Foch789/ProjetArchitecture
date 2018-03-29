@@ -14,7 +14,7 @@ void main (void)
         }
         else
         {
-                sum = vec4(1.0,0.0,0.0,1.0);
+                sum = 0.5 * texture2D(tex, gl_TexCoord[0].st) + 0.5 * vec4(1.0,0.0,0.0,0.5);
         }
 
         gl_FragColor = sum;

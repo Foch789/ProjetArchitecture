@@ -5,9 +5,11 @@
 //Vertex Shader tres simple : translation (1, 1, 0)
 uniform vec3 pos;
 
-uniform vec3 tabcentre[10];
-uniform vec3 tabdef[10];
-uniform float tabrayon[10];
+uniform vec3 tabcentre[100];
+uniform vec3 tabdef[100];
+uniform float tabrayon[100];
+
+uniform float time;
 
 varying float VFactif;
 
@@ -21,7 +23,9 @@ void main(void) {
 								point.z += pos.z;
 								VFactif = 0.0;
 
-								for (int i = 0; i < 10; i++) {
+
+
+								for (int i = 0; i < 100; i++) {
 																float d = distance(vec4(tabcentre[i]+pos.xyz, 1.0), point);
 
 																if (d < tabrayon[i]) {
@@ -30,6 +34,11 @@ void main(void) {
 																}
 
 
+								}
+
+								if (time > 0.f)
+								{
+																point.z += sin(time) * 3.f;
 								}
 
 								gl_Position = gl_ModelViewProjectionMatrix * point;

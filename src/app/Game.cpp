@@ -84,10 +84,14 @@ void Game::collision()
                                                   if (topLeft.x <= p.position().x && p.position().x <= bottomRight.x &&
                                                       topLeft.y >= p.position().y && p.position().y >= bottomRight.y &&
                                                       p.position().z < target.position.z) {
-                                                          std::cout << "touché" << std::endl;
-                                                          target.sendDeform(p.position(), {0, 0, 10}, Projectile::size);
+                                                          target.sendDeform(p.position() - target.position, {-3, -3, 0}, Projectile::size);
                                                           return true;
                                                   }
                                                   return p.position().z < -100;
                                           }), _projectiles.end());
+}
+
+void Game::pause()
+{
+        target.pause();
 }

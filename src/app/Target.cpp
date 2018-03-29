@@ -14,6 +14,9 @@ Target::Target()
 
         width = (object.max().x-object.min().x)+20;
         nbr = 0;
+        touche = false;
+        t=0;
+        p=false;
 
         max = object.max();
         min = object.min();
@@ -48,7 +51,8 @@ Target::Target()
 
         _centre = glGetUniformLocation(prog.id(),"tabcentre");
         _vecteur= glGetUniformLocation(prog.id(),"tabdef");
-        _rayon =glGetUniformLocation(prog.id(),"tabrayon");
+        _rayon = glGetUniformLocation(prog.id(),"tabrayon");
+        _t = glGetUniformLocation(prog.id(),"time");
 
         position.x = 0;
         position.y = 0;
@@ -101,6 +105,15 @@ void Target::update(float time)
         glUniform3fv(_centre, centre.size(), reinterpret_cast<GLfloat*>(&centre[0]));
         glUniform3fv(_vecteur, def.size(), reinterpret_cast<GLfloat*>(&def[0]));
         glUniform1fv(_rayon,rayon.size(), reinterpret_cast<GLfloat*>(&rayon[0]));
+        glUniform1f(_t, t);
+
+        if(t < 1500 && touche)
+        {
+                t += time;
+        } else {
+                t = 0;
+                touche = false;
+        }
 
         if ((position.x + direction.x) >= zone[0].x)
         {
@@ -129,7 +142,10 @@ void Target::update(float time)
                 direction.y = -(direction.y);
         }
 
-        //position+=direction.normalize(1.0);
+        if(!p)
+        {
+                position+=direction.normalize(1.0);
+        }
 
         prog.disable();
 
@@ -179,7 +195,9 @@ void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,
         def.push_back(glm::vec3(_vector.x,_vector.y,_vector.z));
         rayon.push_back(_rayon);
 
-        if(nbr >= 10)
+        touche = true;
+
+        if(nbr >= 100)
         {
                 nbr--;
                 centre.erase(centre.begin());
@@ -187,5 +205,18 @@ void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,
                 rayon.erase(rayon.begin());
         }
         nbr++;
+
+}
+
+void Target::pause()
+{
+        if(p)
+        {
+                p=false;
+        }
+        else
+        {
+                p=true;
+        }
 
 }
