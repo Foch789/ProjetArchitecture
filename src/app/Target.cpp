@@ -7,7 +7,7 @@
 #include <random>
 
 
-Target::Target() : speed(0)
+Target::Target()
 {
         std::ifstream file("assets/models/100x100pointsUV.off");
         SuperOpenGL::Object object = SuperOpenGL::Object::readOFF(file, true);
@@ -61,9 +61,9 @@ void Target::display()
         glEnable(GL_TEXTURE_2D);
         texture.enable();
         glPushMatrix();
-            glRotatef(180.f, 0.f, 0.f, 1.f);
-            glInterleavedArrays(GL_T2F_V3F,0,vertices.data());
-            glDrawElements(GL_TRIANGLES,faces.size()*3,GL_UNSIGNED_INT, faces.data());
+        glRotatef(180.f, 0.f, 0.f, 1.f);
+        glInterleavedArrays(GL_T2F_V3F,0,vertices.data());
+        glDrawElements(GL_TRIANGLES,faces.size()*3,GL_UNSIGNED_INT, faces.data());
         glPopMatrix();
         texture.disable();
         glDisable(GL_TEXTURE_2D);
@@ -72,7 +72,7 @@ void Target::display()
 
 void Target::update(float time)
 {
-
+        prog.enable();
         timeT+=time;
         if (timeT > 10000) {
 
@@ -82,7 +82,7 @@ void Target::update(float time)
                 direction.x = dis(gen);
                 direction.y = dis(gen);
                 direction.z = dis(gen);
-                direction *= 2;
+                direction *= 4;
                 timeT -= 10000;
         }
 
@@ -118,8 +118,7 @@ void Target::update(float time)
 
         position+=direction.normalize(1.0);
 
-        //std::cout << position << std::endl;
-
+        prog.disable();
 
 }
 
@@ -143,11 +142,11 @@ void Target::zoneT(float distance,float angle)
 
         zone[2].x = point-width;
         zone[2].y = 0;
-        zone[2].z = -distance;
+        zone[2].z = -(distance/2.0);
 
         zone[3].x = -point+width;
         zone[3].y = 0;
-        zone[3].z = -distance;
+        zone[3].z = -(distance/2.0);
 
 }
 

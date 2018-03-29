@@ -20,6 +20,7 @@ typedef struct
 
 typedef struct
 {
+        SuperOpenGL::Program prog;
         GLint _centre;
         GLint _vecteur;
         GLint _rayon;
@@ -34,7 +35,6 @@ class Target
 
 public:
 
-float speed;
 SuperOpenGL::Vector position;
 SuperOpenGL::Vector direction;
 SuperOpenGL::Texture texture;
