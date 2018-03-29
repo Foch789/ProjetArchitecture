@@ -167,15 +167,6 @@ void Target::zoneT(float distance,float angle)
 void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)
 {
 
-        /*SuperOpenGL::Program prog;
-           GLint _centre;
-           GLint _vecteur;
-           GLint _rayon;
-           SuperOpenGL::Vector center;
-           SuperOpenGL::Vector vector;
-           float rayon;*/
-        //glGetUniformLocation(prog.id(),"pos");
-
         Deform o;
 
         o.prog.attach(vsd);
