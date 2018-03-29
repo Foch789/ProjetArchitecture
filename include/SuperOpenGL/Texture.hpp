@@ -12,7 +12,8 @@ public:
 
     void loadJPEG(const std::string &fileName);
 
-    void use();
+    void enable();
+    void disable();
 
     void setFilter(GLint min, GLint mag);
 

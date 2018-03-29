@@ -2,8 +2,14 @@
 
 namespace SuperOpenGL {
 
+GLuint Program::_emptyId = 0;
+
 Program::Program()
 {
+    if (_emptyId == 0) {
+        _emptyId = glCreateProgram();
+        glLinkProgram(_emptyId);
+    }
     _id = glCreateProgram();
 }
 
@@ -22,9 +28,14 @@ void Program::link()
     glLinkProgram(_id);
 }
 
-void Program::use()
+void Program::enable()
 {
     glUseProgram(_id);
+}
+
+void Program::disable()
+{
+    glUseProgram(_emptyId);
 }
 
 std::string Program::info()

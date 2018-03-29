@@ -4,30 +4,36 @@
 
 Game::Game()
 {
-    camera.eye = {0, 0, 300};
-    camera.center = {0, 0, 0};
-    camera.up = {0, 1, 0};
+
+        target.zoneT(500.0,22.5);
+        camera.eye = {0, 0, 500};
+        camera.center = {0, 0, 0};
+        camera.up = {0, 1, 0};
+
 }
 
 void Game::display()
 {
-    camera.use();
-    target.display();
+        camera.use();
+        target.display();
 
-    for (Projectile &p : _projectiles)
-        p.display();
+        for (Projectile &p : _projectiles)
+                p.display();
 }
 
 void Game::resize(size_t width, size_t height)
 {
-    camera.windowWidth = width;
-    camera.windowHeight = height;
+        camera.windowWidth = width;
+        camera.windowHeight = height;
 }
 
 void Game::update(float elapsedTime)
 {
+    target.update(elapsedTime);
+
     for (Projectile &p : _projectiles)
         p.update(elapsedTime);
+
     collision();
 }
 

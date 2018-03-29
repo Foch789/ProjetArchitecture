@@ -7,16 +7,21 @@ namespace SuperOpenGL {
 
 class Program {
 public:
-    Program();
+Program();
 
-    void attach(const Shader &shader);
-    void detach(const Shader &shader);
-    void link();
-    void use();
-    std::string info();
+void attach(const Shader &shader);
+void detach(const Shader &shader);
+void link();
+void enable();
+void disable();
+inline GLuint id() const {
+        return _id;
+}
+std::string info();
 
 private:
-    GLuint _id;
+static GLuint _emptyId;
+GLuint _id;
 };
 
 }
