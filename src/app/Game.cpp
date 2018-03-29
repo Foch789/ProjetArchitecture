@@ -83,7 +83,7 @@ void Game::collision()
                     topLeft.y >= p.position().y && p.position().y >= bottomRight.y &&
                     p.position().z < target.position.z) {
                 std::cout << "touché" << std::endl;
-                target.sendDeform(p.position(), {1, 1, 1}, Projectile::size);
+                target.sendDeform(p.position(), {30, 30, 30}, Projectile::size);
                 return true;
             }
                                                   return p.position().z < -100;
