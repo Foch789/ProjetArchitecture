@@ -15,11 +15,11 @@ private:
 View camera;
 Target target;
 std::vector<Projectile> _projectiles;
+float _targetDepth;
 
 public:
 
 Game();
-~Game();
 
 void display();
 void resize(size_t width, size_t height);

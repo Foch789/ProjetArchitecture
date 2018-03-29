@@ -14,7 +14,6 @@ void Projectile::display()
     glPushMatrix();
         glTranslatef(_position.x, _position.y, _position.z);
         glutSolidSphere(_size, 180, 180);
-        //glutSolidTeacup(_size);
     glPopMatrix();
 }
 

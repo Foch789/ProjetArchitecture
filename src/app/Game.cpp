@@ -1,5 +1,6 @@
 #include <app/Game.hpp>
 #include <GL/freeglut.h>
+#include <algorithm>
 
 Game::Game()
 {
@@ -27,6 +28,7 @@ void Game::update(float elapsedTime)
 {
     for (Projectile &p : _projectiles)
         p.update(elapsedTime);
+    collision();
 }
 
 void Game::fire(int x, int y)
@@ -43,15 +45,31 @@ void Game::fire(int x, int y)
 
     winX = float(x);
     winY = float(viewport[3]) - float(y);
+
+    glClear(GL_DEPTH_BUFFER_BIT);
+    camera.use();
+    GLfloat vertices[] = {-1000, -1000, 0, // bottom left corner
+                          -1000,  1000, 0, // top left corner
+                           1000,  1000, 0, // top right corner
+                           1000, -1000, 0}; // bottom right corner
+
+    GLubyte indices[] = {0,1,2, // first triangle (bottom left - top left - top right)
+                         0,2,3}; // second triangle (bottom left - top right - bottom right)
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, vertices);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
+    glDisableClientState(GL_VERTEX_ARRAY);
+
     glReadPixels(x, int(winY), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
 
     gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
-    std::cout << winX << ' ' << winY << ' ' << winZ << std::endl;
-    //std::cout << posX << ' ' << posY << ' ' << posZ << std::endl;
     _projectiles.push_back(Projectile(camera.eye, SuperOpenGL::Vector{float(posX), float(posY), -1} - camera.eye));
 }
 
 void Game::collision()
 {
-
+    _projectiles.erase(std::remove_if(_projectiles.begin(), _projectiles.end(), [](const Projectile &p){
+        return p.position().z < -100;
+    }), _projectiles.end());
 }

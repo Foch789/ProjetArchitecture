@@ -10,6 +10,7 @@ public:
 
     void display();
     void update(float elapsedTime);
+    SuperOpenGL::Vector position() const { return _position; }
 
 private:
     constexpr static const float _speed = 0.1;
