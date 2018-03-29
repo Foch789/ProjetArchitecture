@@ -3,15 +3,14 @@
 //romain.raffin[AT]univ-amu.fr
 
 //Vertex Shader tres simple : translation (1, 1, 0)
-uniform float cputime;
-//uniform /*type*/ alea
+uniform vec3 pos;
 
 void main(void) {
 								vec4 point = vec4(gl_Vertex);
 
-								//point.z = ;
-
-								//gl_FrontColor = gl_Color;
+								point.x += pos.x;
+								point.y += pos.y;
+								point.z += pos.z;
 
 								gl_Position = gl_ModelViewProjectionMatrix * point;
 }

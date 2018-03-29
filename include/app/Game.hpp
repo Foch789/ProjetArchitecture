@@ -19,7 +19,7 @@ std::vector<Projectile> _projectiles;
 public:
 
 Game();
-~Game();
+//~Game();
 
 void display();
 void resize(size_t width, size_t height);

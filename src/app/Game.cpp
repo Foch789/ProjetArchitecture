@@ -1,11 +1,11 @@
 #include <app/Game.hpp>
 #include <GL/freeglut.h>
 
-Game::Game() : mytime(0)
+Game::Game()
 {
 
-        target.zone()
-        camera.eye = {0, 0, 300};
+        target.zoneT(500.0,22.5);
+        camera.eye = {0, 0, 500};
         camera.center = {0, 0, 0};
         camera.up = {0, 1, 0};
 
@@ -28,6 +28,7 @@ void Game::resize(size_t width, size_t height)
 
 void Game::update(float elapsedTime)
 {
+        target.update(elapsedTime);
         for (Projectile &p : _projectiles)
                 p.update(elapsedTime);
 }
