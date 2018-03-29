@@ -22,6 +22,8 @@ Target::Target() : speed(0)
         for (size_t i = 0; i < object.faces().size(); ++i) {
                 faces.push_back(object.faces()[i]);
         }
+
+        texture.loadJPEG("assets/texture/texture.jpg");
 }
 
 Target::~Target()
@@ -30,13 +32,14 @@ Target::~Target()
 
 void Target::display()
 {
-        //glEnable(GL_TEXTURE_2D);
+        glEnable(GL_TEXTURE_2D);
 
-        glColor3f(0.5, 0.5, 0.5);
-        //glutSolidSphere(1,180,180);
+        texture.use();
+        glPushMatrix();
+            glRotatef(180.f, 0.f, 0.f, 1.f);
+            glInterleavedArrays(GL_T2F_V3F,0,vertices.data());
+            glDrawElements(GL_TRIANGLES,faces.size()*3,GL_UNSIGNED_INT, faces.data());
+        glPopMatrix();
 
-        glInterleavedArrays(GL_T2F_V3F,0,vertices.data());
-        glDrawElements(GL_TRIANGLES,faces.size()*3,GL_UNSIGNED_INT, faces.data());
-
-        //glDisable(GL_TEXTURE_2D);
+        glDisable(GL_TEXTURE_2D);
 }

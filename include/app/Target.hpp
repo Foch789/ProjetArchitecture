@@ -4,6 +4,7 @@
 #include <SuperOpenGL/Vector.hpp>
 #include <SuperOpenGL/Face.hpp>
 #include <SuperOpenGL/TextureCoordinates.hpp>
+#include <SuperOpenGL/Texture.hpp>
 
 #include <vector>
 
@@ -22,6 +23,7 @@ public:
 float speed;
 SuperOpenGL::Vector position;
 SuperOpenGL::Vector direction;
+SuperOpenGL::Texture texture;
 
 std::vector<Vertex> vertices;
 std::vector<SuperOpenGL::Face> faces;
