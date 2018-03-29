@@ -78,4 +78,12 @@ void Game::collision()
         _projectiles.erase(std::remove_if(_projectiles.begin(), _projectiles.end(), [] (const Projectile &p){
                                                   return p.position().z < -100;
                                           }), _projectiles.end());
+
+        SuperOpenGL::Vector topLeft, bottomRight;
+        for (const Projectile &p : _projectiles) {
+            if (topLeft.x <= p.position().x && p.position().x <= bottomRight.x &&
+                topLeft.y <= p.position().y && p.position().y <= bottomRight.y &&
+                p.position().z > target.position.z)
+                std::cout << "touché" << std::endl;
+        }
 }

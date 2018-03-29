@@ -63,6 +63,7 @@ void update(float time);
 void zoneT(float distance,float angle);
 
 void sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon);
+void boundingBox(SuperOpenGL::Vector &topLeft, SuperOpenGL::Vector &bottomRight);
 
 };
 

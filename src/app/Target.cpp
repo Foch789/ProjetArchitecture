@@ -150,6 +150,10 @@ void Target::zoneT(float distance,float angle)
 
 }
 
+void Target::boundingBox(SuperOpenGL::Vector &topLeft, SuperOpenGL::Vector &bottomRight)
+{
+}
+
 void sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)
 {
 
