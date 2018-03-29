@@ -121,7 +121,7 @@ void Target::update(float time)
                 direction.y = -(direction.y);
         }
 
-        position+=direction.normalize(1.0);
+        //position+=direction.normalize(1.0);
 
         prog.disable();
 
@@ -157,6 +157,12 @@ void Target::zoneT(float distance,float angle)
 
 void Target::boundingBox(SuperOpenGL::Vector &topLeft, SuperOpenGL::Vector &bottomRight)
 {
+    topLeft = min;
+    topLeft.y = -topLeft.y;
+    bottomRight = max;
+    bottomRight.y = -bottomRight.y;
+    topLeft += position;
+    bottomRight += position;
 }
 
 void Target::sendDeform(SuperOpenGL::Vector _center,SuperOpenGL::Vector _vector,float _rayon)

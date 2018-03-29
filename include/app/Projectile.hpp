@@ -6,6 +6,9 @@
 class Projectile
 {
 public:
+    constexpr static const float speed = 0.1;
+    constexpr static const float size = 5;
+
     Projectile(SuperOpenGL::Vector position, SuperOpenGL::Vector direction);
 
     void display();
@@ -13,8 +16,6 @@ public:
     SuperOpenGL::Vector position() const { return _position; }
 
 private:
-    constexpr static const float _speed = 0.1;
-    constexpr static const float _size = 5;
     SuperOpenGL::Vector _direction;
     SuperOpenGL::Vector _position;
 };
